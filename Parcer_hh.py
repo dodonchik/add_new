@@ -21,6 +21,6 @@ def hh_parce(base_url,headers):
             print(requement)
         
     else:
-        print('AND WHY I NEED TO KNOW THIS INFORMATION?')
+        print('ERROR')
 
 hh_parce(base_url,headers)
