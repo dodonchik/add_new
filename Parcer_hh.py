@@ -19,6 +19,7 @@ def hh_parce(base_url,headers):
             print(title)
             print(href)
             print(requement)
+            print()
         
     else:
         print('ERROR')
