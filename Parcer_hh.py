@@ -16,9 +16,12 @@ def hh_parce(base_url,headers):
         for div in divs:
             title=div.find('a',attrs={'data-qa':"vacancy-serp__vacancy-title"}).text
             href=div.find('a',attrs={'data-qa':"vacancy-serp__vacancy-title"})['href']
+            responsibility=div.find('div',attrs={'data-qa':"vacancy-serp__vacancy_snippet_responsibility"}).text
             requement=div.find('div',attrs={'data-qa':"vacancy-serp__vacancy_snippet_requirement"}).text
+            
             print(title)
             print(href)
+            print(responsibility)
             print(requement)
             print()
         if pagination:
