@@ -10,7 +10,8 @@ def hh_parce(base_url,headers):
     session=requests.Session()
     request=session.get(base_url,headers=headers)
     if request.status_code==200:
-        soup=bs(request.content,'html.parser')
+        soup=bs(request.content,'lxml')
+        pagination=soup.find_all('a',attrs={'data-qa':"pager-next"})
         divs=soup.find_all('div',attrs={'data-qa':"vacancy-serp__vacancy"})
         for div in divs:
             title=div.find('a',attrs={'data-qa':"vacancy-serp__vacancy-title"}).text
@@ -20,6 +21,11 @@ def hh_parce(base_url,headers):
             print(href)
             print(requement)
             print()
+        if pagination:
+                print('--------------------------------')
+                return hh_parce(base_url[:-1]+str(int(base_url[-1])+1),headers)
+        else:
+                print('Done')
         
     else:
         print('ERROR')
